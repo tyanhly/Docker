@@ -5,7 +5,7 @@ ENV SERVER_NAME localhost
 ENV ALLOW_OVERRIDE all
 
 RUN apt-get update -y \
-  && apt-get install -y wget apache2 \
+  && apt-get install -y wget zip unzip apache2 \
        php7.0 \
        php7.0-cli \
        libapache2-mod-php7.0 \
@@ -20,6 +20,8 @@ RUN apt-get update -y \
        php7.0-xsl \
        php7.0-zip \
        php7.0-soap \
+       php7.0-zip \
+       php7.0-curl \
   && wget https://getcomposer.org/composer.phar \
   && mv composer.phar /usr/local/bin/composer \
   && chmod +x /usr/local/bin/composer \

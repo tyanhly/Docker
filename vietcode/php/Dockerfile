@@ -19,7 +19,7 @@ RUN apt-get update -y \
        php7.0-xml \
        php7.0-xsl \
        php7.0-zip \
-       php7.0-soap
+       php7.0-soap \
   && wget https://getcomposer.org/composer.phar \
   && mv composer.phar /usr/local/bin/composer \
   && chmod +x /usr/local/bin/composer \

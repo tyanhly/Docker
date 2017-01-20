@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/bin/sh
 
 cat > /etc/apache2/sites-available/000-default.conf << EOF
 <VirtualHost *:80>
@@ -11,5 +10,4 @@ cat > /etc/apache2/sites-available/000-default.conf << EOF
  </Directory>
 </VirtualHost>
 EOF
-
-apachectl -d /etc/apache2 -f /etc/apache2/apache2.conf -e $LOG_LEVEL -DFOREGROUND
+/apache_foreground.sh

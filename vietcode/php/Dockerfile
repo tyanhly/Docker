@@ -1,8 +1,9 @@
 FROM ubuntu:16.04
 ENV LOG_LEVEL debug
-ENV DOCUMENT_ROOT debug
+ENV DOCUMENT_ROOT /var/www/html
 ENV SERVER_NAME localhost
 ENV ALLOW_OVERRIDE all
+ARG DEBIAN_FRONTED=noninteractive
 
 RUN apt-get update -y \
   && apt-get install -y wget zip unzip apache2 \
@@ -27,5 +28,8 @@ RUN apt-get update -y \
   && chmod +x /usr/local/bin/composer \
   && apt-get  purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false wget
 RUN a2enmod rewrite
+COPY php_apache_entrypoint.sh /php_apache_entrypoint.sh
+COPY apache_foreground.sh /apache_foreground.sh
+ENTRYPOINT /php_apache_entrypoint.sh
 
-ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 80
